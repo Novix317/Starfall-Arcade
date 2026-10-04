@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+```
+<header class="topbar">
+    <div class="logo">GAME<span>HUB</span></div>
+
+    <div class="search-container">
+        <input
+            type="text"
+            id="search"
+            placeholder="Search games..."
+            aria-label="Search games"
+        >
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Game Library</h1>
+        <p>Choose a game and start playing.</p>
+    </section>
+
+    <section class="games" id="game-list">
+
+        <!-- Game 1 -->
+        <a class="game-card" href="games/game1.html" target="_blank" rel="noopener">
+            <img src="images/game1.png" alt="Game 1">
+            <div class="game-info">
+                <h2>Game 1</h2>
+                <p>Action</p>
+            </div>
+        </a>
+
+        <!-- Game 2 -->
+        <a class="game-card" href="games/game2.html" target="_blank" rel="noopener">
+            <img src="images/game2.png" alt="Game 2">
+            <div class="game-info">
+                <h2>Game 2</h2>
+                <p>Arcade</p>
+            </div>
+        </a>
+
+        <!-- Game 3 -->
+        <a class="game-card" href="games/game3.html" target="_blank" rel="noopener">
+            <img src="images/game3.png" alt="Game 3">
+            <div class="game-info">
+                <h2>Game 3</h2>
+                <p>Platformer</p>
+            </div>
+        </a>
+
+        <!-- Game 4 -->
+        <a class="game-card" href="games/game4.html" target="_blank" rel="noopener">
+            <img src="images/game4.png" alt="Game 4">
+            <div class="game-info">
+                <h2>Game 4</h2>
+                <p>Adventure</p>
+            </div>
+        </a>
+
+        <!-- Game 5 -->
+        <a class="game-card" href="games/game5.html" target="_blank" rel="noopener">
+            <img src="images/game5.png" alt="Game 5">
+            <div class="game-info">
+                <h2>Game 5</h2>
+                <p>Puzzle</p>
+            </div>
+        </a>
+
+        <!-- Game 6 -->
+        <a class="game-card" href="games/game6.html" target="_blank" rel="noopener">
+            <img src="images/game6.png" alt="Game 6">
+            <div class="game-info">
+                <h2>Game 6</h2>
+                <p>Other</p>
+            </div>
+        </a>
+
+    </section>
+
+    <p id="no-results" class="no-results">
+        No games found.
+    </p>
+</main>
+
+<footer>
+    <p>Game Hub</p>
+</footer>
+
+<script>
+    const search = document.getElementById("search");
+    const games = document.querySelectorAll(".game-card");
+    const noResults = document.getElementById("no-results");
+
+    search.addEventListener("input", () => {
+        const query = search.value.toLowerCase().trim();
+        let visibleGames = 0;
+
+        games.forEach(game => {
+            const name = game.querySelector("h2").textContent.toLowerCase();
+            const category = game.querySelector("p").textContent.toLowerCase();
+
+            if (name.includes(query) || category.includes(query)) {
+                game.style.display = "";
+                visibleGames++;
+            } else {
+                game.style.display = "none";
+            }
+        });
+
+        noResults.style.display = visibleGames === 0 ? "block" : "none";
+    });
+</script>
+```
+
+</body>
+</html>
